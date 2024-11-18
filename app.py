@@ -7,11 +7,9 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['ALLOWED_EXTENSIONS'] = {'csv'}
 
-# Функция для проверки разрешения файла
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
-# Функция для фильтрации по ветке
 def filter_by_branch(df, branch):
     return df[df['Action'].str.contains(branch, case=False, na=False)]
 
